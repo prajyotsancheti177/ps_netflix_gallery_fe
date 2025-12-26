@@ -420,7 +420,7 @@ function EpisodeCard({ index, episode, onThumbnailUpload, onMediaUpload, onMusic
     const [dragOverIdx, setDragOverIdx] = useState(null);
 
     const thumbnailUrl = episode.thumbnail
-        ? `/uploads/thumbnails/${episode.thumbnail}`
+        ? api.getThumbnailUrl(episode.thumbnail)
         : null;
 
     const handleThumbnailSelect = async (e) => {
@@ -661,9 +661,9 @@ function EpisodeCard({ index, episode, onThumbnailUpload, onMediaUpload, onMusic
                                         <span className="media-index">{i + 1}</span>
 
                                         {media.type === 'video' ? (
-                                            <video src={`/uploads/media/${media.filename}`} muted />
+                                            <video src={media.url} muted />
                                         ) : (
-                                            <img src={`/uploads/media/${media.filename}`} alt="" />
+                                            <img src={media.url} alt="" />
                                         )}
 
                                         {media.type === 'video' && <span className="media-type-badge">VIDEO</span>}

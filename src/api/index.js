@@ -43,9 +43,12 @@ export const api = {
     return response.data;
   },
 
-  getSeriesThumbnailUrl: (filename) => {
-    if (!filename) return null;
-    return `/uploads/series-thumbnails/${filename}`;
+  getSeriesThumbnailUrl: (urlOrFilename) => {
+    if (!urlOrFilename) return null;
+    // If it's already a full URL (S3), return as-is
+    if (urlOrFilename.startsWith('http')) return urlOrFilename;
+    // Legacy local path
+    return `/uploads/series-thumbnails/${urlOrFilename}`;
   },
 
   // ============================================
@@ -100,19 +103,28 @@ export const api = {
     return response.data;
   },
 
-  getThumbnailUrl: (filename) => {
-    if (!filename) return null;
-    return `/uploads/thumbnails/${filename}`;
+  getThumbnailUrl: (urlOrFilename) => {
+    if (!urlOrFilename) return null;
+    // If it's already a full URL (S3), return as-is
+    if (urlOrFilename.startsWith('http')) return urlOrFilename;
+    // Legacy local path
+    return `/uploads/thumbnails/${urlOrFilename}`;
   },
 
-  getMediaUrl: (filename) => {
-    if (!filename) return null;
-    return `/uploads/media/${filename}`;
+  getMediaUrl: (urlOrFilename) => {
+    if (!urlOrFilename) return null;
+    // If it's already a full URL (S3), return as-is
+    if (urlOrFilename.startsWith('http')) return urlOrFilename;
+    // Legacy local path
+    return `/uploads/media/${urlOrFilename}`;
   },
 
-  getMusicUrl: (filename) => {
-    if (!filename) return null;
-    return `/uploads/music/${filename}`;
+  getMusicUrl: (urlOrFilename) => {
+    if (!urlOrFilename) return null;
+    // If it's already a full URL (S3), return as-is
+    if (urlOrFilename.startsWith('http')) return urlOrFilename;
+    // Legacy local path
+    return `/uploads/music/${urlOrFilename}`;
   },
 
   // ============================================

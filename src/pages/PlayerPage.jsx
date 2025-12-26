@@ -295,7 +295,9 @@ export default function PlayerPage() {
     }
 
     const currentMedia = episode.media?.[mediaIndex];
-    const mediaUrl = currentMedia ? api.getMediaUrl(currentMedia.filename) : null;
+    // Use the stored URL directly (works for both S3 URLs and legacy local paths)
+    const mediaUrl = currentMedia?.url || null;
+    // For music, use getMusicUrl helper which handles both S3 URLs and legacy filenames
     const musicUrl = episode.music ? api.getMusicUrl(episode.music) : null;
     const isCurrentVideo = currentMedia?.type === 'video';
 
