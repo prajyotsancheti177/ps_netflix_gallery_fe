@@ -322,7 +322,7 @@ export default function PlayerPage() {
                 <div className="player-intro" onClick={() => { setShowIntro(false); setIsPlaying(true); }}>
                     <video
                         className="intro-video"
-                        src="/uploads/media/Netflix New Logo Animation 2019.mp4"
+                        src="/Netflix New Logo Animation 2019.mp4"
                         autoPlay
                         playsInline
                         onEnded={() => { setShowIntro(false); setIsPlaying(true); }}
